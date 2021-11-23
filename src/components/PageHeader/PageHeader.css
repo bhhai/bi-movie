@@ -1,0 +1,24 @@
+
+.page-header {
+  padding-top: 130px;
+  padding-bottom: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.page-header::before {
+  content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(to top, #0f0f0f, rgba(0, 0, 0, 0));
+}
+
+.page-header__content > h2 {
+  text-align: center;
+  font-size: 26px;
+  position: relative;
+}

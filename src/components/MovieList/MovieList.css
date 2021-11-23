@@ -1,0 +1,19 @@
+
+.movie-item {
+  width: 100%;
+}
+
+.swiper-slide {
+  width: 15%;
+  min-height: 200px;
+}
+
+.swiper-slide > img {
+  min-height: 200px;
+}
+
+@media only screen and (max-width: 600px) {
+  .swiper-slide {
+    width: 40%;
+  }
+}

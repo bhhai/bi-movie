@@ -1,0 +1,132 @@
+
+.hero-slide__item {
+  padding: 20px 0;
+    width: 100%;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hero-slide__item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .6);
+}
+
+.hero-slide__item::after {
+  content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(to top, #0f0f0f, rgba(0, 0, 0, 0));
+}
+.hero-slide__content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.hero-slide__info {
+  width: 55%;
+}
+
+.hero-slide__info > h4 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.hero-slide__info__overview {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hero-slide__poster {
+  position: relative;
+  padding: 80px 0;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .hero-slide__content {
+    min-height: 300px;
+  }
+  .hero-slide__poster {
+    display: none;
+  }
+  .hero-slide__info {
+    width: 100%;
+    padding: 70px 0;
+  }
+  .hero-slide__info__overview {
+    font-size: 12px;
+  }
+  .hero-slide__info > h4 {
+    font-size: 24px;
+  }
+  .btns {
+    width: 100%;
+  }
+
+  .btns > * {
+    font-size: 14px;
+  }
+  iframe {
+    width: 100%;
+  }
+}
+
+.hero-slide__poster > img {
+  width: 400px;
+  height: 100%;
+
+  border-radius: 30px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transform: scale(0);
+  transition: transform .7s ease;
+}
+
+.btns {
+  margin-top: 40px;
+}
+
+.btns, .hero-slide__info > h4, .hero-slide__info__overview {
+  opacity: 0;
+  transform: translateY(-100px);
+
+  transition: opacity .5s ease, transform .5s ease;
+}
+
+/* active */
+
+.active > .hero-slide__content > .hero-slide__poster > img {
+  transform: scale(1);
+}
+
+.active > .hero-slide__content > .hero-slide__info > h4, 
+.active > .hero-slide__content > .hero-slide__info > .btns,
+.active > .hero-slide__content > .hero-slide__info > span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.active > .hero-slide__content > .hero-slide__info > h4 {
+  transition-delay: .3s;
+}
+
+.active > .hero-slide__content > .hero-slide__info > .btns {
+  transition-delay: .6s;
+}
+
+.active > .hero-slide__content > .hero-slide__info > span {
+  transition-delay: .9s;
+}
