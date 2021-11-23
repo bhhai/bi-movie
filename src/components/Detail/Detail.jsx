@@ -4,6 +4,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import apiConfig from "../../api/apiConfig";
 import tmdbApi from "../../api/tmdbApi";
+import Casts from "../Casts/Casts";
+import PlayMovie from "../PlayMovie/PlayMovie";
+import Similar from "../../components/SimilarMovie/SimilarMovie";
 import "./Detail.css";
 
 Detail.propTypes = {};
@@ -84,6 +87,12 @@ function Detail(props) {
           </Grid>
         </Container>
       )}
+      <div className="casts">
+        <Casts category={category} id={id} />
+      </div>
+
+      <PlayMovie id={id} category={category} />
+      <Similar />
     </div>
   );
 }

@@ -1,0 +1,21 @@
+
+.casts {
+  margin-top: -100px;
+}
+
+.casts > h3 {
+  font-size: 26px;
+  font-weight: 600;
+}
+.cast__item {
+  margin-top: 40px;
+}
+
+.cast__item__img {
+  border-radius: 30px;
+}
+
+.cast__item__name {
+  text-align: center;
+  font-weight: 600;
+}
