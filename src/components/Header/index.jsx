@@ -48,7 +48,7 @@ function Header(props) {
               Movies
             </NavLink>
             <NavLink activeClassName="active-menu" exact to="/tv">
-              Tv Shows
+              Tv Series
             </NavLink>
           </div>
         </Container>

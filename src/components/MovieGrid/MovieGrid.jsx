@@ -24,7 +24,7 @@ function MovieGrid({ keyword, category }) {
           switch (category) {
             case "tv":
               response = await tmdbApi.getTvList(tvType.popular, { params });
-              document.title = "TV Shows";
+              document.title = "TV Series";
               break;
             default:
               response = await tmdbApi.getMoviesList(movieType.upcoming, {
