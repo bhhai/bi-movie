@@ -24,11 +24,13 @@ function MovieGrid({ keyword, category }) {
           switch (category) {
             case "tv":
               response = await tmdbApi.getTvList(tvType.popular, { params });
+              document.title = "TV Shows";
               break;
             default:
               response = await tmdbApi.getMoviesList(movieType.upcoming, {
                 params,
               });
+              document.title = "Movies";
           }
         } else {
           const params = {

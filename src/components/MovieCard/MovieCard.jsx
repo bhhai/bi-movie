@@ -9,7 +9,7 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 
 MovieCard.propTypes = {};
 
-function MovieCard({ item, categories }) {
+function MovieCard({ item, categories, className }) {
   const link = "/" + category[categories] + "/" + item.id;
   const bg = apiConfig.w500Image(
     item.poster_path ||
@@ -17,7 +17,7 @@ function MovieCard({ item, categories }) {
       "https://image.tmdb.org/t/p/w500//3QTp0Vu3t3ZfHwMvOOLpCUkJHZN.jpg"
   );
   return (
-    <Link to={link} className="movie-card">
+    <Link to={link} className={`movie-card ${className ? "trending" : ""}`}>
       <div className="poster" style={{ backgroundImage: `url(${bg})` }}>
         <Button title={<YouTubeIcon />}></Button>
       </div>

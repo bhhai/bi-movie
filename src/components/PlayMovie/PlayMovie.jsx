@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Container } from "@mui/material";
+import { Container, Rating } from "@mui/material";
 import { embedMovie } from "../../api/embed";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import "./PlayMovie.css";
 
 PlayMovie.propTypes = {};
 
-function PlayMovie({ id, category }) {
+function PlayMovie({ id, category, item }) {
   const [src, setSrc] = useState();
   useEffect(() => {
     const getVideo = async () => {
@@ -18,11 +20,6 @@ function PlayMovie({ id, category }) {
   return (
     <Container
       style={{
-        height: "100%",
-        width: "100%",
-        marginBottom: "200px",
-        position: "relative",
-        paddingBottom: "30%",
         marginTop: "50px",
       }}
     >
@@ -30,17 +27,22 @@ function PlayMovie({ id, category }) {
         id="iframe"
         src={src}
         width="100%"
+        height="500px"
         frameborder="0"
         title="play"
         allowFullScreen
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-        }}
       ></iframe>
+      <h3 style={{ marginTop: "20px" }}>{item && item.title}</h3>
+      <p style={{ margin: "20px 0" }}>
+        {item ? "Release date: " + item.release_date : "Comming soon"}
+      </p>
+      <Rating
+        name="customized-10"
+        defaultValue={item ? Math.ceil(item.vote_average) : 4}
+        max={10}
+        readOnly
+        emptyIcon={<StarBorderIcon color="primary" />}
+      />
     </Container>
   );
 }

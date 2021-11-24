@@ -28,6 +28,7 @@ function HeroSlide(props) {
         var response = await tmdbApi.getMoviesList(movieType.popular, {
           params,
         });
+        document.title = "Bi Movies";
         setMovieItems(response.results.slice(0, 4));
       } catch (error) {
         console.log("Fetch data error: ", error);

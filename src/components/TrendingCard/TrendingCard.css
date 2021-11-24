@@ -1,0 +1,24 @@
+
+.trending {
+  display: flex !important;
+}
+
+.trending:hover {
+  color: red;
+}
+
+
+.poster__trending {
+  margin-right: 0;
+}
+
+
+
+.title {
+  font-weight: 600;
+}
+
+.title > h4 {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}

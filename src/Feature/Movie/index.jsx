@@ -8,7 +8,6 @@ Movie.propTypes = {};
 
 function Movie(props) {
   const { cate } = useParams();
-  console.log(cate);
   return (
     <div>
       <PageHeader title="Movies" />

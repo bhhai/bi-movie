@@ -3,17 +3,20 @@ import { Container, Grid, Rating } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import apiConfig from "../../api/apiConfig";
-import tmdbApi from "../../api/tmdbApi";
+import tmdbApi, { movieType, tvType } from "../../api/tmdbApi";
 import Casts from "../Casts/Casts";
 import PlayMovie from "../PlayMovie/PlayMovie";
 import Similar from "../../components/SimilarMovie/SimilarMovie";
 import "./Detail.css";
+import MovieCard from "../MovieCard/MovieCard";
+import TrendingCard from "../TrendingCard/TrendingCard";
 
 Detail.propTypes = {};
 
 function Detail(props) {
   const { category, id } = useParams();
   const [item, setItem] = useState();
+  const [trending, setTrending] = useState([]);
 
   useEffect(() => {
     const getDetail = async () => {
@@ -28,6 +31,30 @@ function Detail(props) {
 
     getDetail();
   }, [category, id]);
+
+  useEffect(() => {
+    (async () => {
+      let response = null;
+      const params = {};
+      try {
+        switch (category) {
+          case "tv":
+            response = await tmdbApi.getTvList(tvType.popular, { params });
+            break;
+
+          default:
+            response = await tmdbApi.getMoviesList(movieType.popular, {
+              params,
+            });
+            break;
+        }
+
+        setTrending(response.results);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   return (
     <div>
@@ -91,8 +118,25 @@ function Detail(props) {
         <Casts category={category} id={id} />
       </div>
 
-      <PlayMovie id={id} category={category} />
-      <Similar />
+      <Container>
+        <Grid container spacing={3}>
+          <Grid item sm={8}>
+            <PlayMovie id={id} category={category} item={item} />
+          </Grid>
+          <Grid
+            item
+            sm={4}
+            style={{ height: "800px", overflowY: "scroll", marginTop: "50px" }}
+          >
+            <h3 style={{ textAlign: "center", marginBottom: "30px" }}>
+              Trending movies
+            </h3>
+            {trending.map((movie, i) => (
+              <TrendingCard item={movie} categories={category} />
+            ))}
+          </Grid>
+        </Grid>
+      </Container>
     </div>
   );
 }
