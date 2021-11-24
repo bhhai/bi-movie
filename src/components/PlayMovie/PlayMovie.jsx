@@ -43,6 +43,7 @@ function PlayMovie({ id, category, item }) {
         readOnly
         emptyIcon={<StarBorderIcon color="primary" />}
       />
+      <span>{item && `(${item.vote_count} votes)`}</span>
     </Container>
   );
 }
