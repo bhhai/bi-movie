@@ -1,5 +1,6 @@
 import { Container, Grid } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import { category, movieType, tvType } from "../../api/tmdbApi";
 import { ButtonOutline } from "../../components/Button";
 import HeroSlide from "../../components/HeroSlide";
@@ -25,9 +26,9 @@ function Home(props) {
           <Grid item style={{ fontSize: "22px" }}>
             <h3 className="home__title">Trending Movie</h3>
           </Grid>
-          <Grid>
+          <Link to="/movie">
             <ButtonOutline title="View more" className="small"></ButtonOutline>
-          </Grid>
+          </Link>
         </Grid>
         <MovieList category={category.movie} type={movieType.popular} />
       </Container>
@@ -45,9 +46,9 @@ function Home(props) {
           <Grid item style={{ fontSize: "22px" }}>
             <h3 className="home__title">Top Rated Movie</h3>
           </Grid>
-          <Grid>
+          <Link to="/movie">
             <ButtonOutline title="View more" className="small"></ButtonOutline>
-          </Grid>
+          </Link>
         </Grid>
         <MovieList category={category.movie} type={movieType.top_rated} />
       </Container>
@@ -65,9 +66,9 @@ function Home(props) {
           <Grid item style={{ fontSize: "22px" }}>
             <h3 className="home__title">Trending TV</h3>
           </Grid>
-          <Grid>
+          <Link to="/tv">
             <ButtonOutline title="View more" className="small"></ButtonOutline>
-          </Grid>
+          </Link>
         </Grid>
         <MovieList category={category.tv} type={tvType.popular} />
       </Container>
@@ -85,9 +86,9 @@ function Home(props) {
           <Grid item style={{ fontSize: "22px" }}>
             <h3 className="home__title">Top Rated TV</h3>
           </Grid>
-          <Grid>
+          <Link to="/tv">
             <ButtonOutline title="View more" className="small"></ButtonOutline>
-          </Grid>
+          </Link>
         </Grid>
         <MovieList category={category.tv} type={tvType.top_rated} />
       </Container>

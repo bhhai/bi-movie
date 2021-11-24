@@ -6,6 +6,7 @@ import {
   IconButton,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import SwiperCore, { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
@@ -63,14 +64,10 @@ function HeroSlide(props) {
 }
 
 const HeroSlideItem = ({ item, className }) => {
+  let history = useHistory();
   const background = apiConfig.originalImage(
     item.backdrop_path ? item.backdrop_path : item.poster_path
   );
-
-  const handleButtonClick = () => {
-    const trailer = document.getElementById(`#dialog__${item.id}`);
-    console.log(trailer);
-  };
 
   const [open, setOpen] = React.useState(false);
 
@@ -105,7 +102,10 @@ const HeroSlideItem = ({ item, className }) => {
           <h4>{item.title}</h4>
           <span className="hero-slide__info__overview">{item.overview}</span>
           <div className="btns">
-            <Button onClick={handleButtonClick} title="Watch now" />
+            <Button
+              onClick={() => history.push("/movie/" + item.id)}
+              title="Watch now"
+            />
             <ButtonOutline onClick={handleClickOpen} title="Watch trailer" />
             <Dialog
               open={open}
